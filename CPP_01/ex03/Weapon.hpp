@@ -1,6 +1,6 @@
 #ifndef WEAPON_HPP
 
-#define WAEPON_HPP
+#define WEAPON_HPP
 #include <iostream>
 
 class Weapon
