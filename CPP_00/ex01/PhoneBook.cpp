@@ -24,9 +24,7 @@ void PhoneBook::add_contact(std::string first_name, std::string last_name, \
     id++;
     if (number_of_contacts < 8)
         number_of_contacts++;
-    if (id >= 8)
-        id = id % 8;
-    contact_list[id].set_infos(first_name, last_name, nickname, phone_number, secret);
+    contact_list[id % 8].set_infos(first_name, last_name, nickname, phone_number, secret);
 }
 
 void PhoneBook::display_string(std::string string)
@@ -36,7 +34,7 @@ void PhoneBook::display_string(std::string string)
 
     i = 0;
     len = ft_strlen(string);
-    if (len < 9)
+    if (len <= 9)
     {
         while(i + len <= 9)
         {
@@ -70,8 +68,8 @@ void PhoneBook::display_list(void)
 
     i = 0;
     c = '1';
-    std::cout << "|INDEX     |FIRST NAME|LAST NAME |NICKNAME  |" << std::endl;
-    while(i < number_of_contacts + 1)
+    std::cout << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << std::endl;
+    while(i < number_of_contacts)
     {
         aux = contact_list[i];
         d = c + i;

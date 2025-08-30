@@ -19,11 +19,11 @@ int str_is_numeric(std::string string)
 
     i = 0;
     len = ft_strlen(string);
-    if (len > 11)
+    if (string == "" || len > 11)
         return (1);
     while (string[i])
     {
-        if (string[i] >= 48  && string[i] <= 57)
+        if (string[i] >= 48 && string[i] <= 57)
             i++;
         else
             return (1);

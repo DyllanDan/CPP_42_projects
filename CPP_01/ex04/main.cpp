@@ -4,7 +4,11 @@
 
 int main(int argc, char** argv)
 {
-    std::string linha;
+    std::string line;
+    std::string text;
+    int i;
+
+    i = -1;
     if (argc != 4)
     {
         std::cout << "Incorrect number of arguments." << std::endl;
@@ -17,10 +21,17 @@ int main(int argc, char** argv)
         std::cout << "File \"" << argv[1] << "\" cannot be open" << std::endl;
         return (1);
     }
-    while (std::getline(file, linha))
+    while (std::getline(file, line))
     {
-        std::cout << linha << std::endl;
-        //find();
+        i = line.find(argv[2]);
+        if (i > 0)
+        {
+            //copia para text com as alterações
+        }
+        else
+        {
+            //copia o resto
+        }
     }
     file.close();
     return (0);

@@ -34,8 +34,9 @@ class PhoneBook
         void display_contact(int id);
 };
 
-int str_is_alpha(std::string string);
+int str_is_name(std::string string);
 int str_is_numeric(std::string string);
 int ft_strlen(std::string string);
+std::string first_letter(std::string string);
 
 #endif

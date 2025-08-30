@@ -18,6 +18,5 @@ Zombie::~Zombie(void)
 
 void zombieDecay(Zombie* zombie)
 {
-    //(*zombie).~Zombie();
     delete zombie;
 }
