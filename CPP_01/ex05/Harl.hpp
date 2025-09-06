@@ -14,7 +14,7 @@
 #define HARL_HPP
 
 #include <iostream>
-
+#include <string>
 class Harl
 {
     private:
@@ -27,4 +27,9 @@ class Harl
         void complain(std::string level);
 };
 
+struct references
+{
+    std::string name;
+    void (Harl::*function)(void);
+};
 #endif

@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dydaniel <dydaniel@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 20:53:37 by dydaniel          #+#    #+#             */
-/*   Updated: 2025/09/04 20:53:38 by dydaniel         ###   ########.fr       */
+/*   Created: 2025/09/04 21:09:58 by dydaniel          #+#    #+#             */
+/*   Updated: 2025/09/04 21:10:02 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_HPP
+#define HARL_HPP
 
-void Zombie::announce(void) const
+#include <iostream>
+#include <string>
+#include <ctype.h>
+class Harl
 {
-    std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+    private:
+        void debug(void);
+        void info(void);
+        void warning(void);
+        void error(void);
+    
+    public:
+        void complain(std::string level);
+};
 
-Zombie::Zombie()
-{
-    this->name = "";
-}
-
-Zombie::~Zombie(void)
-{
-    std::cout << name << ": IiiiirghH..." << std::endl;
-    name = "";
-}
-
-void Zombie::set_name(std::string name)
-{
-    this->name = name;
-}
-
-void zombieDecay(Zombie* zombie)
-{
-    delete zombie;
-}
+#endif

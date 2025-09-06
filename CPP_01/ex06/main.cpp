@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dydaniel <dydaniel@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 20:53:37 by dydaniel          #+#    #+#             */
-/*   Updated: 2025/09/04 20:53:38 by dydaniel         ###   ########.fr       */
+/*   Created: 2025/09/06 13:18:29 by dydaniel          #+#    #+#             */
+/*   Updated: 2025/09/06 13:18:31 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-void Zombie::announce(void) const
+int main(int argc, char **argv)
 {
-    std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+    Harl harl;
 
-Zombie::Zombie()
-{
-    this->name = "";
-}
-
-Zombie::~Zombie(void)
-{
-    std::cout << name << ": IiiiirghH..." << std::endl;
-    name = "";
-}
-
-void Zombie::set_name(std::string name)
-{
-    this->name = name;
-}
-
-void zombieDecay(Zombie* zombie)
-{
-    delete zombie;
+    if (argc != 2)
+    {
+        std::cout << "[ Harl is complaining about not having anything to complain ]" << std::endl;
+        return (0);
+    }
+    else
+    {
+        harl.complain(argv[1]);
+    }
+    return (0);
 }
