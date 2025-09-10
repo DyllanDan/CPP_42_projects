@@ -50,3 +50,9 @@ void Fixed::setRawBits(int const raw)
 		std::cout << "setRawBits member function called" << std::endl;
 	fixedPoint = raw;
 }
+
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
+{
+    out << fixed.toFloat(); // usa a função já existente que converte para float
+    return out;
+}
