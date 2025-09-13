@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:13:20 by dydaniel          #+#    #+#             */
-/*   Updated: 2025/09/13 16:07:12 by dydaniel         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:32:53 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ Fixed Fixed::operator*(const Fixed& fixed) const
 {
 	Fixed aux;
 	
-	aux.fixedPoint = this->fixedPoint * fixed.fixedPoint;
+	aux.fixedPoint = (this->fixedPoint * fixed.fixedPoint) >> fractional;
 	return (aux);	
 }
 
@@ -154,24 +154,32 @@ Fixed Fixed::operator--(int)
 	return (aux);
 }
 
-Fixed& Fixed::min( Fixed& a, Fixed& b )
+Fixed& Fixed::min( Fixed& fixed_1, Fixed& fixed_2 )
 {
-    return (a < b ? a : b);
+    if (fixed_1 < fixed_2)
+		return fixed_1;
+	return fixed_2;
 }
 
-const Fixed& Fixed::min( const Fixed& a, const Fixed& b )
+const Fixed& Fixed::min( const Fixed& fixed_1, const Fixed& fixed_2 )
 {
-    return (a < b ? a : b);
+    if (fixed_1 < fixed_2)
+		return fixed_1;
+	return fixed_2;
 }
 
-Fixed& Fixed::max( Fixed& a, Fixed& b )
+Fixed& Fixed::max( Fixed& fixed_1, Fixed& fixed_2 )
 {
-    return (a > b ? a : b);
+    if (fixed_1 > fixed_2)
+		return fixed_1;
+	return fixed_2;
 }
 
-const Fixed& Fixed::max( const Fixed& a, const Fixed& b )
+const Fixed& Fixed::max( const Fixed& fixed_1, const Fixed& fixed_2 )
 {
-    return (a > b ? a : b);
+    if (fixed_1 > fixed_2)
+		return fixed_1;
+	return fixed_2;
 }
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
