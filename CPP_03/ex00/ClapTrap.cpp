@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 18:15:52 by dydaniel          #+#    #+#             */
-/*   Updated: 2025/09/20 14:00:13 by dydaniel         ###   ########.fr       */
+/*   Updated: 2025/09/23 20:40:44 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ClapTrap::ClapTrap()
 {
+	std::cout << "Deault Constructor called" << std::endl;
     name = "";
 	hitPoints = 10;
     energyPoints = 10;
@@ -22,21 +23,27 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name)
 {
+	std::cout << "Name Constructor called" << std::endl;
     this->name = name;
 	hitPoints = 10;
     energyPoints = 10;
     atkDamage = 0;
 }
 
-ClapTrap::~ClapTrap(){}
+ClapTrap::~ClapTrap()
+{
+	std::cout << "Desconstructor called" << std::endl;
+}
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
+	std::cout << "Copy constructor called" << std::endl;
 	name = other.name;
 	hitPoints = other.hitPoints;
 	energyPoints = other.energyPoints;
 	atkDamage = other.atkDamage;
 }
+
 ClapTrap& ClapTrap::operator=(const ClapTrap& fixed)
 {
 	if (this != &fixed)
