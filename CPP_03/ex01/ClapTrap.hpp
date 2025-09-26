@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 18:11:16 by dydaniel          #+#    #+#             */
-/*   Updated: 2025/09/25 20:14:54 by dydaniel         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:24:01 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ class ClapTrap
         int getHitPoints(void) const;
         int getAtkPoints(void) const;
         int getEnergyPoints(void) const;
-        std::string getName() const;
+        virtual void showStatus(void) const;
+        std::string getName(void) const;
 };
 
 #endif

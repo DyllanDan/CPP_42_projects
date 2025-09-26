@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 18:15:52 by dydaniel          #+#    #+#             */
-/*   Updated: 2025/09/25 20:46:00 by dydaniel         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:34:15 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "Deault Constructor called" << std::endl;
+	std::cout << "Deault ClapTrap Constructor called" << std::endl;
     name = "";
 	hitPoints = 10;
     energyPoints = 10;
@@ -23,7 +23,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "Name Constructor called" << std::endl;
+	std::cout << "Name ClapTrap Constructor called" << std::endl;
     this->name = name;
 	hitPoints = 10;
     energyPoints = 10;
@@ -32,12 +32,12 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Desconstructor called" << std::endl;
+	std::cout << "ClapTrap Desconstructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap Copy constructor called" << std::endl;
 	name = other.name;
 	hitPoints = other.hitPoints;
 	energyPoints = other.energyPoints;
@@ -65,8 +65,7 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (hitPoints > 0)
-		this->hitPoints -= amount;
+	this->hitPoints -= amount;
 	if (hitPoints < 0)
 		this->hitPoints = 0;
 	std::cout << "ClapTrap " << name << " receives " << amount << " of damage. Remaining health: ";
@@ -106,7 +105,15 @@ int ClapTrap::getEnergyPoints(void) const
 	return(energyPoints);
 }
 
-std::string ClapTrap::getName() const
+std::string ClapTrap::getName(void) const
 {
 	return (name);
+}
+
+void ClapTrap::showStatus(void) const
+{
+	std::cout << "Current status:" << std::endl;
+    std::cout << "HP: " << this->hitPoints << std::endl;
+    std::cout << "Atk: " << this->atkDamage << std::endl;
+    std::cout << "Energy: " << this->energyPoints << std::endl;
 }
