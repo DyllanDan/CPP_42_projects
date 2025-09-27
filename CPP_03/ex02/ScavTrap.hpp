@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 20:48:13 by dydaniel          #+#    #+#             */
-/*   Updated: 2025/09/27 11:36:49 by dydaniel         ###   ########.fr       */
+/*   Updated: 2025/09/27 11:13:45 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ScavTrap : public ClapTrap
 		ScavTrap& operator=(const ScavTrap& fixed); //Overcharge =
         ScavTrap(std::string name); // Constructor with name
     //methods
-        void guardGate(void);
+        void guardGate();
         void attack(const std::string& name);
         void setValue(int& class_att, int value);
         void showStatus(void) const;

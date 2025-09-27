@@ -1,4 +1,4 @@
-NAME = calptrap
+NAME = claptrap
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -I.
@@ -9,13 +9,13 @@ ClapTrap.cpp ScavTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-all = $(NAME)
-
 $(NAME) : $(OBJ)
 	$(CC) $(FLAGS) $(FLAG_98) -o $(NAME) $(OBJ)
 
 %.o: %.cpp
 	$(CC) $(FLAGS) $(FLAG_98) -c $< -o $@
+
+all: $(NAME)
 
 clean:
 	rm -f $(OBJ)

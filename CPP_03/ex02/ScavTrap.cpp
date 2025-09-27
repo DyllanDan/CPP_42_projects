@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 20:58:20 by dydaniel          #+#    #+#             */
-/*   Updated: 2025/09/27 11:53:18 by dydaniel         ###   ########.fr       */
+/*   Updated: 2025/09/27 13:40:29 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,21 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& fixed)
 
 void ScavTrap::attack(const std::string& target)
 {
-	std::cout << "ScavTrap " << this->getName() << " attacks " << " target " << target;
-	std::cout << " causing " << this->getAtkPoints() << " points of damage!" << std::endl;
+	if (getEnergyPoints() > 0 && getHitPoints() > 0)
+	{
+		std::cout << "ScavTrap " << getName() << " attacks " << " target " << target;
+		std::cout << " causing " << getAtkPoints() << " points of damage!" << std::endl;
+	}
+	else if (getHitPoints() == 0)
+	{
+		std::cout << "ScavTrap " << getName() << " is defeated and cannot attack." << std::endl;
+		return ;
+	}
+	else if (getEnergyPoints() == 0)
+	{
+		std::cout << "ScavTrap " << getName() << "has not enough energy to make an action." << std::endl;
+		return ;
+	}
 }
 
 void ScavTrap::guardGate(void)

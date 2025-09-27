@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 18:15:52 by dydaniel          #+#    #+#             */
-/*   Updated: 2025/09/27 11:22:46 by dydaniel         ###   ########.fr       */
+/*   Updated: 2025/09/27 13:39:58 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ void ClapTrap::attack(const std::string& target)
 	}
 	else if (hitPoints == 0)
 	{
-		std::cout << "ClapTrap " << name << "is defeated and cannot attack." << target;
+		std::cout << "ClapTrap " << name << " is defeated and cannot attack." << std::endl;
 		return ;
 	}
 	else if (energyPoints == 0)
 	{
-		std::cout << "ClapTrap " << name << "has not enough energy to make an action." << target;
+		std::cout << "ClapTrap " << name << "has not enough energy to make an action." << std::endl;
 		return ;
 	}
 }
