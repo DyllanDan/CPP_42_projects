@@ -24,4 +24,11 @@ int main(void)
     k->makeSound(); //will output the cat sound!
     l->makeSound();
     mota->makeSound();
+
+    delete meta;
+    delete mota;
+    delete i;
+    delete j;
+    delete k;
+    delete l;
 }

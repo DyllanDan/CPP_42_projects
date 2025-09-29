@@ -4,13 +4,13 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -I.
 FLAG_98 = -std=c++98
 
-SRC = Animal.cpp Dog.cpp Cat.cpp \
+SRC = Animal.cpp Dog.cpp Cat.cpp Brain.cpp\
 WrongAnimal.cpp WrongDog.cpp WrongCat.cpp \
 main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-all = $(NAME)
+all: $(NAME)
 
 $(NAME) : $(OBJ)
 	$(CC) $(FLAGS) $(FLAG_98) -o $(NAME) $(OBJ)

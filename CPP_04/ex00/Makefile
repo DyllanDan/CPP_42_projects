@@ -10,7 +10,7 @@ main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-all = $(NAME)
+all: $(NAME)
 
 $(NAME) : $(OBJ)
 	$(CC) $(FLAGS) $(FLAG_98) -o $(NAME) $(OBJ)

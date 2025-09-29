@@ -17,5 +17,5 @@ class WrongAnimal
         std::string getType() const;
 };
 
-static void actionMessage(std::string name, int flag);
+void actionMessage(std::string name, int flag);
 #endif

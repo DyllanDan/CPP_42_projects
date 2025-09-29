@@ -4,12 +4,14 @@ Dog::Dog()
 {
     actionMessage("Dog", 0);
     name = "Dog";
+    brain = new Brain();
 }
 
 
 Dog::~Dog()
 {
     actionMessage("Dog", 4);
+    delete brain;
 }
 
 Dog::Dog(const Dog& other) : Animal(other)
@@ -24,7 +26,8 @@ Dog& Dog::operator=(const Dog& other)
     if (this != &other)
     {
         Animal::operator=(other);
-        name = other.name;
+        delete this->brain;
+        this->brain = new Brain(*other.brain);
     }
     return (*this);
 }

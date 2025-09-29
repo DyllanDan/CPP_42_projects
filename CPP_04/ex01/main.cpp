@@ -5,23 +5,61 @@
 
 int main(void)
 {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+    const Animal* pets[20];
+    const WrongAnimal* wrongPets[20];
 
-    const WrongAnimal* mota = new WrongAnimal();
-    const WrongAnimal* k = new WrongDog();
-    const WrongAnimal* l = new WrongCat();
-    
-    std::cout << k->getType() << " " << std::endl;
-    std::cout << l->getType() << " " << std::endl;
-    k->makeSound(); //will output the cat sound!
-    l->makeSound();
-    mota->makeSound();
+    for(int i = 0; i < 20; i++)
+    {
+        std::cout << "Creating ANIMAL number: " << i << std::endl;
+        std::cout << "-------------------------" << std::endl;
+        if (i % 2 == 0)
+        {
+            pets[i] = new Dog();
+            pets[i]->makeSound();
+        }
+        else
+        {
+            pets[i] = new Cat();
+            pets[i]->makeSound();
+        }
+    }
+    std::cout << "End of Creation of Animals" << std::endl;
+    for(int i = 0; i < 20; i++)
+    {
+        std::cout << "Creating WRONGANIMAL number: " << i << std::endl;
+        std::cout << "-------------------------" << std::endl;
+        if (i % 2 == 1)
+        {
+            wrongPets[i] = new WrongDog();
+            wrongPets[i]->makeSound();
+        }
+        else
+        {
+            wrongPets[i] = new WrongCat();
+            wrongPets[i]->makeSound();
+        }
+        std::cout << "Creation Completed"<< std::endl;
+        std::cout << "-------------------------" << std::endl;
+    }
+    std::cout << "End of Creation of WrongAnimals" << std::endl;
+
+    for (int i = 0; i < 20; i++)
+    {
+        std::cout << "Deleting ANIMAL number: " << i << std::endl;
+        std::cout << "-------------------------" << std::endl;
+        std::cout << "Bye bye" << std::endl;
+        pets[i]->makeSound();
+        delete pets[i];
+    }
+
+    for (int i = 0; i < 20; i++)
+    {
+        std::cout << "Deleting WRONGANIMAL number: " << i << std::endl;
+        std::cout << "-------------------------" << std::endl;
+        std::cout << "Bye bye" << std::endl;
+        wrongPets[i]->makeSound();
+        delete wrongPets[i];
+        std::cout << "End of deletion"<< std::endl;
+        std::cout << "-------------------------" << std::endl;
+    }
 }

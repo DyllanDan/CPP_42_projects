@@ -4,11 +4,13 @@ Cat::Cat()
 {
     actionMessage("Cat", 0);
     name = "Cat";
+    brain = new Brain();
 }
 
 Cat::~Cat()
 {
     actionMessage("Cat", 4);
+    delete brain;
 }
 
 Cat::Cat(const Cat& other) : Animal(other)
@@ -23,7 +25,8 @@ Cat& Cat::operator=(const Cat& other)
     if (this != &other)
     {
         Animal::operator=(other);
-        name = other.name;
+        delete this->brain;
+        this->brain = new Brain(*other.brain);
     }
     return (*this);
 }
