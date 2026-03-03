@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 14:38:51 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/02/28 15:44:43 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/03/02 21:01:48 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
     return (*this);
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade (grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade)
 {
     std::cout << " Bureaucrat Grade Constructor called" << std::endl;
     if (grade < 1)
@@ -82,6 +82,11 @@ void Bureaucrat::gradeDecrement()
     this->grade++;
 }
 
+void signForm(Form& form)
+{
+    form.beSigned();
+}
+
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureau)
 {
     os << bureau.getName() << ", bureaucrat with grade  " << bureau.getGrade();
@@ -97,3 +102,4 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
     return ("Grade is too low!");
 }
+
