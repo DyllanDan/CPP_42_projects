@@ -4,7 +4,7 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -I.
 FLAG_98 = -std=c++98
 
-SRC = Bureaucrat.cpp main.cpp
+SRC = Bureaucrat.cpp main.cpp Form.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
