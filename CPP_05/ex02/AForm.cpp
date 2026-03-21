@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 20:29:49 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/03/14 14:50:35 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/03/21 17:38:36 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,6 @@ int Form::getGradeToExec() const
     return grade_to_execute;
 }
 
-void Form::beSigned(const Bureaucrat& bureau)
-{
-    int buerauGrade = bureau.getGrade();
-
-    if (this->grade_to_sign < buerauGrade)
-    {
-        std::cout << bureau.getName() << " não conseguiu assinar " << this->getName() <<
-        " porque não tem ranque suficiente!" << std::endl;
-        throw Form::GradeTooLowException();
-    }
-    else
-    {
-        assigned = true;
-        std::cout << bureau.getName() << " assinou " << this->getName() << std::endl;
-    }
-}
-
 std::ostream& operator<<(std::ostream& os, const Form& form)
 {
     os << form.getName() << ", Form with grade to sign  " << form.getGradeToSign() << " and grade to execute " <<
@@ -99,4 +82,9 @@ const char* Form::GradeTooHighException::what() const throw()
 const char* Form::GradeTooLowException::what() const throw()
 {
     return ("Form: Grade is too low!");
+}
+
+const char* Form::FormNotAssignedException::what() const throw()
+{
+    return ("Form: Not assigned!");
 }

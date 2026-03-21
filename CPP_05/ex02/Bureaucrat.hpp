@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 14:38:54 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/03/14 13:00:02 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/03/21 13:56:17 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class Bureaucrat
         void gradeIncrement();
         void gradeDecrement();
         void signForm(Form& form);
+        void executeForm(AForm const & form) const;
         
     class GradeTooHighException : public std::exception
     {
