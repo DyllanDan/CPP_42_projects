@@ -6,17 +6,16 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 13:53:41 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/03/21 17:44:08 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/03/25 21:00:56 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : name("Presidential"), assigned(false), grade_to_execute(45), grade_to_sign(72)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Pardon", false, 25, 5){};
+PresidentialPardonForm::~PresidentialPardonForm(){};
 
-PresidentialPardonForm::~PresidentialPardonForm();
-
-PresidentialPardonForm& PresidentialPardonForm::operator=(const Form& other)
+PresidentialPardonForm& PresidentialPardonForm::operator=(const AForm& other)
 {
     if (this != &other)
     {
@@ -25,51 +24,52 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const Form& other)
     return (*this);
 }
 
-PresidentialPardonForm::ShrubberyCreationForm(const Form& other) : name(other.getName()), grade_to_sign(other.getGradeToSign()),
-grade_to_execute(other.getGradeToExec())
-{
-    this->assigned = other.getAssigned();
-};
+PresidentialPardonForm::PresidentialPardonForm(const AForm& other) : AForm((other.getName()), other.getAssigned(), other.getGradeToSign(),
+other.getGradeToExec())
+{};
 
 void PresidentialPardonForm::beSigned(const Bureaucrat& bureau)
 {
     int buerauGrade = bureau.getGrade();
+    int grade_to_sign = this->getGradeToSign();
 
-    if (this->grade_to_sign < buerauGrade)
+    if (grade_to_sign < buerauGrade)
     {
         std::cout << bureau.getName() << " não conseguiu assinar " << this->getName() <<
         " porque não tem ranque suficiente!" << std::endl;
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     }
     else
     {
-        assigned = true;
+        setAssigned(true);
         std::cout << bureau.getName() << " assinou " << this->getName() << std::endl;
     }
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const & bureau)
+void PresidentialPardonForm::execute(Bureaucrat & bureau)
 {
     int buerauGrade = bureau.getGrade();
+    bool assigned = this->getAssigned();
+    int grade_to_execute = this->getGradeToExec();
 
-    if (this->grade_to_execute < buerauGrade)
+    if (grade_to_execute < buerauGrade)
     {
         std::cout << bureau.getName() << " não conseguiu executar " << this->getName() <<
         " porque não tem ranque suficiente!" << std::endl;
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     }
-    else if (!this->assigned)
+    else if (assigned)
     {
-        throw Form::FormNotAssignedException();
+        throw AForm::FormNotAssignedException();
     }
     else
-        pardon(buerau, true);
+        pardon(bureau);
 }
 
 
 void PresidentialPardonForm::pardon(const Bureaucrat& bureau)
 {
-    std::string name = buerau.getName();
+    std::string name = bureau.getName();
 
     std::cout << name <<" foi perdoado por Zaphod Beeblebrox." << std::endl;
 

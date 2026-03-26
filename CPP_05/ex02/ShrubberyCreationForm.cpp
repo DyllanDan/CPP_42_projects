@@ -6,18 +6,17 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 13:53:44 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/03/21 17:44:37 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/03/25 21:06:36 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include <fcntl.h>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : name("Shrub"), assigned(false), grade_to_execute(137), grade_to_sign(145)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Presidential Pardon", false, 72, 45){};
+ShrubberyCreationForm::~ShrubberyCreationForm(){};
 
-ShrubberyCreationForm::~ShrubberyCreationForm();
-
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const Form& other)
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const AForm& other)
 {
     if (this != &other)
     {
@@ -26,25 +25,24 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const Form& other)
     return (*this);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const Form& other) : name(other.getName()), grade_to_sign(other.getGradeToSign()),
-grade_to_execute(other.getGradeToExec())
-{
-    this->assigned = other.getAssigned();
-};
+ShrubberyCreationForm::ShrubberyCreationForm(const AForm& other) : AForm((other.getName()), other.getAssigned(), other.getGradeToSign(),
+other.getGradeToExec())
+{};
 
 void ShrubberyCreationForm::beSigned(const Bureaucrat& bureau)
 {
     int buerauGrade = bureau.getGrade();
+    int grade_to_sign = this->getGradeToSign();
 
-    if (this->grade_to_sign < buerauGrade)
+    if (grade_to_sign < buerauGrade)
     {
         std::cout << bureau.getName() << " não conseguiu assinar " << this->getName() <<
         " porque não tem ranque suficiente!" << std::endl;
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     }
     else
     {
-        assigned = true;
+        setAssigned(true);
         std::cout << bureau.getName() << " assinou " << this->getName() << std::endl;
     }
 }
@@ -52,19 +50,21 @@ void ShrubberyCreationForm::beSigned(const Bureaucrat& bureau)
 void ShrubberyCreationForm::execute(Bureaucrat const & bureau)
 {
     int buerauGrade = bureau.getGrade();
+    bool assigned = this->getAssigned();
+    int grade_to_execute = this->getGradeToExec();
 
-    if (this->grade_to_execute < buerauGrade)
+    if (grade_to_execute < buerauGrade)
     {
         std::cout << bureau.getName() << " não conseguiu executar " << this->getName() <<
         " porque não tem ranque suficiente!" << std::endl;
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     }
-    else if (!this->assigned)
+    else if (assigned)
     {
-        throw Form::FormNotAssignedException();
+        throw AForm::FormNotAssignedException();
     }
     else
-        writeTree(buerau);
+        writeTree(bureau);
 }
 
 std::string ShrubberyCreationForm::asciiTree() const
@@ -83,18 +83,26 @@ std::string ShrubberyCreationForm::asciiTree() const
            "             |||");
 }
 
-void ShrubberyCreationForm::writeTree(const Bureaucrat& bureau)
+void ShrubberyCreationForm::writeTree(const Bureaucrat& bureau) const
 {
-    std::string name = buerau.getName();
-    std::string tree;
-    int fd;
-    
-    fd = open(name + "_shrubbery", O_CREAT | O_WRONLY, 0644);
+    std::string name = bureau.getName();
+    std::string filename = name + "_shrubbery";
+    std::string tree = asciiTree();
+
+    int fd = open(filename.c_str(), O_CREAT | O_WRONLY | O_TRUNC, 0644);
+
     if (fd == -1)
     {
-        std::cout << "Erro ao criar/ler o arquivo" << std::endl; 
+        std::cerr << "Erro ao criar/abrir o arquivo" << std::endl;
+        return;
     }
-    tree = asciiTree();
-    write(fd, tree.c_str(), tree.size());
+
+    if (write(fd, tree.c_str(), tree.size()) == -1)
+    {
+        std::cerr << "Erro ao escrever no arquivo" << std::endl;
+        close(fd);
+        return;
+    }
+
     close(fd);
 }

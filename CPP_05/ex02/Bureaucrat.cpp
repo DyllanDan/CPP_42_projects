@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 14:38:51 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/03/14 14:50:54 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/03/25 20:32:00 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,14 @@ void Bureaucrat::gradeDecrement()
     this->grade++;
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form)
 {
     form.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm & form)
+{
+    form.execute(*this);
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureau)

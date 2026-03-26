@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 13:49:58 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/03/21 17:44:32 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/03/25 20:55:21 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@
 
 class Bureaucrat;
 
-class PresidentialPardonForm : public AForm
+class RobotomyRequestForm : public AForm
 {
     public:
+        RobotomyRequestForm();
+        ~RobotomyRequestForm();
+        RobotomyRequestForm(const AForm& other);
+        RobotomyRequestForm& operator=(const AForm& other);
         void beSigned(const Bureaucrat& bureau);
-        void execute(Bureaucrat const & bureau)
+        void execute(Bureaucrat const & bureau);
         void robotomy(const Bureaucrat& bureau, bool success);
 };
 
