@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 14:38:54 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/03/25 20:31:56 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/03/28 13:44:21 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ class Bureaucrat
         public:
             virtual const char* what() const throw();
     };
-
-friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureau);
 };
+
+std::ostream& operator<<(std::ostream& os, const AForm& form);
+
 #endif
