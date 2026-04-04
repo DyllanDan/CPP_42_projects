@@ -30,41 +30,44 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 static void charConverter(std::string type)
 {
     char c;
-    if (type.length() == 1)
-        c = type[0];
-    else if
+    int value;
+
+    std::stringstream ss(type);
+    ss >> value;
+
+    if (ss.fail() || ss.eof())
     {
-        int value = std::stoi(type)
-        if (value >= 32 && value <= 255)
-        {
-            c = static_cast<char>(value);
-        }
-        else
-        {
-            
-        }
+        std::cout << "Char: impossível" << std::endl;
+        return;
     }
+    if (value < 32 || value > 255)
+    {
+        std::cout << "Char: sem visualização" << std::endl;
+        return;
+    }
+    c = static_cast<char>(value);
+    std::cout << "Char: " << c << std::endl;
 }
 
 static void intConverter(std::string type)
 {
-    
+    return ;
 }
 
 static void floatConverter(std::string type)
 {
-    
+    return ;
 }
 
 static void doubleConverter(std::string type)
 {
-    
+    return ;
 }
 
 void ScalarConverter::Converter(std::string type)
 {
     charConverter(type);
-    intConverter(type);
-    floatConverter(type);
-    doubleConverter(type);
+    //intConverter(type);
+    //floatConverter(type);
+    //doubleConverter(type);
 }

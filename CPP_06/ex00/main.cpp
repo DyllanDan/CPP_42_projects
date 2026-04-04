@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarCoverter.hpp                                 :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/03 18:03:19 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/04/03 18:04:14 by dydaniel         ###   ########.fr       */
+/*   Created: 2026/04/04 16:12:27 by dydaniel          #+#    #+#             */
+/*   Updated: 2026/04/04 16:15:45 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#include "ScalarConverter.hpp"
 
-#include <iostream>
-#include <string>
-#include <stdexcept>
-
-class ScalarConverter
+void main(int argc, char **argv)
 {
-    private:
-        ScalarConverter();
-        ~ScalarConverter();
-        ScalarConverter(const ScalarConverter& other);
-        ScalarConverter& operator=(const ScalarConverter& other);
-
-    public:
-        static void Converter(std::string type);
+    if (argc != 2)
+    {
+        std::cout << "Insert one argument" << std::endl;
+        return ;
+    }
+    
 }
-
-#endif
