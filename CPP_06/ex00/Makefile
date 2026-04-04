@@ -1,4 +1,4 @@
-NAME = form
+NAME = converter
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -I.

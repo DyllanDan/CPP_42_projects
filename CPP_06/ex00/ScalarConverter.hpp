@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarCoverter.hpp                                 :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 18:03:19 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/04/03 18:04:14 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/04/04 18:08:13 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <sstream>
+#include <climits>
 
 class ScalarConverter
 {
@@ -27,6 +29,6 @@ class ScalarConverter
 
     public:
         static void Converter(std::string type);
-}
+};
 
 #endif
