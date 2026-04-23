@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 18:03:16 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/04/04 18:14:42 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/04/23 19:40:29 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void intConverter(std::string type)
         std::cout << "Int: impossível" << std::endl;
         return;
     }
-    std::cout << "Int: " << value << std::endl;
+    std::cout << "Int: " << static_cast<int>(value) << std::endl;
     return ;
 }
     
@@ -77,13 +77,30 @@ static void floatConverter(std::string type)
 {
     float value;
 
+    if (type == "nan" || type == "nanf")
+    {
+        std::cout << "Float: " << "nanf" << std::endl;
+        return ;
+    }
+    else if(type == "+inf" || type == "+inff")
+    {
+        std::cout << "Float: " << "+inff" << std::endl;
+        return ;
+    }
+    else if(type == "-inf" || type == "-inff")
+    {
+        std::cout << "Float: " << "-inff" << std::endl;
+        return ;
+    }
     std::stringstream ss(type);
     ss >> value;
     if (ss.fail())
     {
-        std::cout << "Int: impossível" << std::endl;
+        std::cout << "Float: impossível" << std::endl;
         return;
     }
+    if (value == static_cast<int>(value))
+        std::cout << std::fixed << std::setprecision(1);
     std::cout << "Float: " << value << "f" << std::endl;
     return ;
 }
@@ -92,16 +109,34 @@ static void doubleConverter(std::string type)
 {
     double value;
 
+    if (type == "nan" || type == "nanf")
+    {
+        std::cout << "Double: " << "nan" << std::endl;
+        return ;
+    }
+    else if(type == "+inf" || type == "+inff")
+    {
+        std::cout << "Double: " << "+inf" << std::endl;
+        return ;
+    }
+    else if(type == "-inf" || type == "-inff")
+    {
+        std::cout << "Double: " << "-inf" << std::endl;
+        return ;
+    }
     std::stringstream ss(type);
     ss >> value;
     if (ss.fail())
     {
-        std::cout << "Int: impossível" << std::endl;
+        std::cout << "Double: impossível" << std::endl;
         return ;
     }
+    if (value == static_cast<int>(value))
+        std::cout << std::fixed << std::setprecision(1);
     std::cout << "Double: " << value << std::endl;
     return ;
 }
+
 
 void ScalarConverter::Converter(std::string type)
 {
