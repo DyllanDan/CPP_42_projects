@@ -1,10 +1,10 @@
-NAME = serializer
+NAME = base
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -I.
 FLAG_98 = -std=c++98
 
-SRC = Serializer.cpp main.cpp
+SRC = Base.cpp Esab.cpp main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
