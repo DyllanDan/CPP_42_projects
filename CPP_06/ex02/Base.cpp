@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 10:48:54 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/04/25 11:22:49 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/04/25 11:26:33 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Base * generate(void)
             return new A;
         case 1:
             return new B;
-        case 2;
+        case 2:
             return new C;
         default:
             return new A;
