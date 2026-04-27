@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 14:49:15 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/04/25 15:12:05 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/04/27 20:26:13 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ class Array
                 virtual const char* what() const throw();
         };
 };
+
+#include "Array.tpp"
 
 #endif
