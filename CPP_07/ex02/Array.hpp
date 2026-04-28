@@ -6,12 +6,15 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 14:49:15 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/04/27 20:26:13 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/04/27 21:03:37 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
+
+#include <cstddef>
+#include <exception>
 
 template<typename T>
 
@@ -19,7 +22,7 @@ class Array
 {
     private:
         T *array;
-        unsigned int size;
+        unsigned int _size;
     
     public:
         Array();

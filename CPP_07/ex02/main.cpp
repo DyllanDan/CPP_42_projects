@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 20:27:05 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/04/27 20:51:54 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/04/27 21:00:13 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 template<typename T>
 void print_elements(const Array<T>& list)
 {
-    for(unsigned int i = 0; i < list.size(); i++)
+    unsigned int size = list.size();
+    for(unsigned int i = 0; i < size; i++)
     {
         std::cout << list[i] << std::endl;
     }
