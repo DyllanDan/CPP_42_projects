@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 15:12:30 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/04/27 21:02:10 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:08:18 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ Array<T>& Array<T>::operator=(const Array<T>& other)
     if (this != &other)
     {
         delete [] array;
-        unsigned int len = other._size;
-        array = new T[len]();
-        for (unsigned int i = 0; i < len; i++)
+        _size = other.size();
+        array = new T[_size]();
+        for (unsigned int i = 0; i < _size; i++)
         {
             array[i] = other.array[i];
         }
