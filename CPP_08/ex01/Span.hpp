@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:49:28 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/05/05 21:04:33 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/05/09 15:06:19 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ class Span
     public:
         Span();
         ~Span();
-        Span& Span(const Span &other);
+        Span(const Span &other);
         Span& operator=(const Span &other);
         Span(unsigned int N);
         
-        void addNumber(int n);
-        void addNumbers(std::vector<int>& numbers);
+        void addNumber(int n); //add a sigle number
+        void addNumbers(std::vector<int>& numbers); //add a group of numbers
         int shortestSpan() const;
         int longestSpan() const;
         void setSize(unsigned int N);
