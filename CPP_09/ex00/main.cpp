@@ -1,39 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/12 17:31:19 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/05/12 18:50:51 by dydaniel         ###   ########.fr       */
+/*   Created: 2026/05/12 18:59:44 by dydaniel          #+#    #+#             */
+/*   Updated: 2026/05/12 19:20:51 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() {}
-BitcoinExchange::~BitcoinExchange() {}
-
-BitcoinExchange(const BitcoinExchange& other) : database(other.database) {}
-
-BitcoinExchange& operator=(const BitcoinExchange& other)
+int main(int argc, char* argv[])
 {
-    if (this != &other)
+    if (argc != 2)
     {
-       database = other.database; 
+        std::cout << "Not enough arguments - ./btc argument" << std::endl;
+        return ;
     }
-    return *this;
+    
+    if (!isValidInput(argv[1]))
+    {
+        std::cout << "Incorrect document informations" << std::endl;
+    }
+    
 }
 
-BitcoinExchange::BitcoinExchange(std::string& DBFile)
+bool isValidline(line)
 {
-    addDB(DBFile);
+    
+    for (size_t = 0; i < line.size(); i++)
+    {
+        if (!((line[i] >= '0' && line[i] <= '9') || line[i] == '-' || line[i] == ','))
+            return false;
+    }
+    std::string day;
+    std::string month;
+    std::string year;
+    
+
 }
 
-void BitcoinExchange::addDB(const std::string& text)
+bool isValidInput(char* file)
 {
-    std::ifstream file("data.csv");
+    std::ifstream file(file);
     std::string line;
 
     if (!file.is_open())
@@ -45,7 +56,9 @@ void BitcoinExchange::addDB(const std::string& text)
     while (std::getline(file, line))
     {
         std::stringstream ss(line);
-
+        
+        if (!isValidline(line))
+            return false;
         std::string date;
         std::string value;
 
