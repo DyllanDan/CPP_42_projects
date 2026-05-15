@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 17:31:19 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/05/12 18:50:51 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/05/14 20:56:28 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ BitcoinExchange::BitcoinExchange(std::string& DBFile)
 
 void BitcoinExchange::addDB(const std::string& text)
 {
-    std::ifstream file("data.csv");
+    std::ifstream file(text);
     std::string line;
 
     if (!file.is_open())
