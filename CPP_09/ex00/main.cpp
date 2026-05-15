@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 18:59:44 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/05/14 21:02:06 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/05/14 21:09:30 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ bool isValidDate(const std::string& line)
     std::string day = line.substr(month_pos + 1, day_pos);
     std::string exchange_rate = line.substr(day_pos + 1, line.size());
     
-    if(std::atoi(year).c_str() < 2009)
+    if(std::atoi(year.c_str()) < 2009)
         return false;
-    if (std::atoi(month).c_str() < 1 || std::atoi(month).c_str() > 12)
+    if (std::atoi(month.c_str()) < 1 || std::atoi(month.c_str()) > 12)
         return false;
-    if (std::atoi(day).c_str() < 1 || std::atoi(day).c_str() > 31)
+    if (std::atoi(day.c_str()) < 1 || std::atoi(day.c_str()) > 31)
         return false;
     return true;
 }
 
 bool isValidRate(const std::string& line)
 {   
-    if(std::stod(line) < 0 || std::stod(line) > 1000)
+    if(std::atof(line.c_str()) < 0 || std::atof(line.c_str()) > 1000)
         return false;
     return true;
 }
