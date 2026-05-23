@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 16:39:53 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/05/14 20:56:55 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/05/23 09:49:56 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <iostream>
+#include <cstdlib>
+#include <stdexcept>
 
 class BitcoinExchange
 {
@@ -28,10 +32,17 @@ class BitcoinExchange
         ~BitcoinExchange();
         BitcoinExchange(const BitcoinExchange& other);
         BitcoinExchange& operator=(const BitcoinExchange& other);
-        BitcoinExchange(std::string& DBFile);
+        BitcoinExchange(const std::string& DBFile);
 
-        std::string readFile(const std::string& file);
-        void addDB(const std::string& text);
-}
+        void addDB(const std::string& file);
+
+        float getRate(const std::string& date) const;
+        void processInput(const std::string& file) const;
+};
+
+bool isValidline(const std::string& line);
+bool isValidDate(const std::string& line);
+bool isValidRate(const std::string& line);
+bool isValidInput(char* input_file);
 
 #endif
