@@ -6,7 +6,7 @@
 /*   By: dydaniel <dydaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:37 by dydaniel          #+#    #+#             */
-/*   Updated: 2026/05/23 14:16:17 by dydaniel         ###   ########.fr       */
+/*   Updated: 2026/05/23 15:30:39 by dydaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,35 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& src)
 //_________________Vector________________________________
 void fordJohnsonVector(std::vector<int>& v)
 {
+    int n = static_cast<int>(v.size());
+    if (n <= 1)
+        return ;
+    bool hasOdd = (n % 2 != 0);
+    int offNum;
+    if (hasOdd)
+        offNum = v[n - 1];
+    else
+        offNum = 0;
     
+    std::vector<int> main;
+    std::vector<int> pend;
+
+    for (int i = 0; i + 1 < (hasOdd ? 1 : 0); i += 2)
+    {
+        if (v[i] > v[i + 1])
+        {
+            main.push_back(v[i]);
+            pend.push_back(v[i + 1]);
+        }
+        else
+        {
+            pend.push_back(v[i]);
+            main.push_back(v[i + 1]);
+        }
+    }
+    fordJohnsonDeque(main);
+    
+    std::vector<int> chain;
 }
 void insertionSortVector(std::vector<int>& chain, const std::vector<int>& pending)
 {
